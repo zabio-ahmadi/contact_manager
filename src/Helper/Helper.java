@@ -168,8 +168,8 @@ public class Helper extends Config {
                         Scanner scanner = new Scanner(System.in);
                         if (option == ASK_USER_INPUT) {
 
-                                Helper.PrintHeader();
-                                Helper.PrintInColor("Enter your option : ", WHITE);
+                                PrintHeader();
+                                PrintInColor("Enter your option : ", WHITE);
 
                                 option = scanner.nextInt();
 
@@ -191,10 +191,10 @@ public class Helper extends Config {
 
                                 if (option == SHOW_CONTACTS) {
 
-                                        Helper.showContacts(contacts.getContacts());
-                                        Helper.printFooter();
+                                        showContacts(contacts.getContacts());
+                                        printFooter();
 
-                                        Helper.PrintInColor("Enter your option : ", WHITE);
+                                        PrintInColor("Enter your option : ", WHITE);
                                         option = scanner.nextInt();
                                         option = populateErrorOrReturnHome(option);
                                         continue;
@@ -203,7 +203,7 @@ public class Helper extends Config {
 
                                 // update contact
                                 if (option == UPDATE_CONTACTS) {
-                                        Helper.showContacts(contacts.getContacts());
+                                        showContacts(contacts.getContacts());
 
                                         if (contacts.getContacts() != null) {
 
@@ -217,14 +217,14 @@ public class Helper extends Config {
                                                 } else {
                                                         System.out.println(String.format(
                                                                         " Contact with id %d doesn't exists", id));
-                                                        Helper.PrintErrorAndReturn();
+                                                        PrintErrorAndReturn();
                                                         option = scanner.nextInt();
                                                         option = populateErrorOrReturnHome(option);
                                                 }
 
                                         } else {
-                                                Helper.showContacts(contacts.getContacts());
-                                                Helper.printFooter();
+                                                showContacts(contacts.getContacts());
+                                                printFooter();
                                                 option = scanner.nextInt();
                                                 option = populateErrorOrReturnHome(option);
                                         }
@@ -232,10 +232,10 @@ public class Helper extends Config {
                                 }
                                 // delete contact
                                 if (option == DELETE_CONTACT) {
-                                        Helper.showContacts(contacts.getContacts());
+                                        showContacts(contacts.getContacts());
 
                                         if (contacts.getContacts() != null) {
-                                                Helper.deleteOption();
+                                                deleteOption();
                                                 System.out.print("Enter contact id to delete: ");
                                                 int id = scanner.nextInt();
 
@@ -246,13 +246,13 @@ public class Helper extends Config {
                                                 } else {
                                                         System.out.println(String.format(
                                                                         " Contact with id %d doesn't exists", id));
-                                                        Helper.PrintErrorAndReturn();
+                                                        PrintErrorAndReturn();
                                                         option = scanner.nextInt();
                                                         option = populateErrorOrReturnHome(option);
                                                 }
 
                                         } else {
-                                                Helper.printFooter();
+                                                printFooter();
                                                 option = scanner.nextInt();
                                                 option = populateErrorOrReturnHome(option);
                                         }
@@ -263,13 +263,13 @@ public class Helper extends Config {
 
                         if (option < 1 || option > 4) {
 
-                                Helper.clearConsoleScreen();
-                                Helper.PrintErrorAndReturn();
+                                clearConsoleScreen();
+                                PrintErrorAndReturn();
                                 option = scanner.nextInt();
                                 option = populateErrorOrReturnHome(option);
 
                         }
-
+                        scanner.close();// close scanner
                 }
 
         }
