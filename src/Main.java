@@ -1,9 +1,7 @@
-import Helper.Helper;
+import Application.Application;
 
-public class Main extends Helper {
-
+public class Main {
     public static void main(String[] args) {
-
-        Helper.runApplication();// start application
+       new Application().run();
     }
 }

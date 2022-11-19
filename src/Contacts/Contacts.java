@@ -1,96 +1,91 @@
 package Contacts;
 
-import Config.Config;
 import Helper.Helper;
-import Person.Person;
 
 import java.util.Scanner;
 
-public class Contacts {
+public abstract class Contacts extends Helper {
 
-    static Person[] contact;
+    protected String name;
+    protected String[] lastname;
+    protected String address;
+    protected String[] telelphoneNumbers;
+    protected String[] emailAddresses;
+    protected String[] socialAcounts;
+    protected String profession;
 
     public Contacts() {
     }
 
-    public Contacts(Person[] persons) {
-        contact = persons;
+    public Contacts(String name, String[] lastname, String address, String[] telelphoneNumbers, String[] emailAddresses,
+            String[] socialAcounts, String profession) {
+        this.name = name;
+        this.lastname = lastname;
+        this.address = address;
+        this.telelphoneNumbers = telelphoneNumbers;
+        this.emailAddresses = emailAddresses;
+        this.socialAcounts = socialAcounts;
+        this.profession = profession;
     }
 
-    public static Contacts of(Person... persons) {
-        return new Contacts(persons);
+    public String getName() {
+        return name;
     }
 
-    public Person[] getContacts() {
-        return contact;
+    protected void setName(String name) {
+        this.name = name;
     }
 
-    public void setContacts(Person[] person) {
-        contact = person;
+    public String[] getLastname() {
+        return lastname;
     }
 
-    private int getCharNumericValue(String value) {
-        return (int) (value.charAt(0));
+    public void setLastname(String[] lastname) {
+        this.lastname = lastname;
     }
 
-    private void shift(int index) {
-        Person tempContact = contact[index];
-        contact[index] = contact[index - 1];
-        contact[index - 1] = tempContact;
+    public String getAddress() {
+        return address;
     }
 
-    private void bubbleSort() {
-
-        for (int i = 0; i < contact.length; i++) {
-
-            for (int j = contact.length - 1; j >= 1; j--) {
-
-                int firstPersonNameValue = getCharNumericValue(contact[j].getName().toUpperCase());
-                int firstPersonLastNameValue = getCharNumericValue(contact[j].getLastname()[0].toUpperCase());
-
-                int secondPersonNameValue = getCharNumericValue(contact[j - 1].getName().toUpperCase());
-                int secondPersonLastNameValue = getCharNumericValue(contact[j - 1].getLastname()[0].toUpperCase());
-
-                // sort by last name if first names are equals
-                if (firstPersonNameValue == secondPersonNameValue) {
-
-                    if (firstPersonLastNameValue < secondPersonLastNameValue) {
-                        shift(j);
-                    }
-
-                    // sort by first name
-                } else if (firstPersonNameValue < secondPersonNameValue) {
-                    shift(j);
-                }
-
-            }
-        }
+    public void setAddress(String address) {
+        this.address = address;
     }
 
-    public void add(Person newContact) {
-        Person[] temp = new Person[contact.length + 1];
-
-        for (int i = 0; i < contact.length; i++) {
-            temp[i] = contact[i];
-        }
-        temp[contact.length] = newContact;
-
-        contact = temp;
-        // bubble sort
-        bubbleSort();
-
+    public String[] getTelelphoneNumbers() {
+        return telelphoneNumbers;
     }
 
-    public Person createOrupdate(String flag) {
+    public void setTelelphoneNumbers(String[] telelphoneNumbers) {
+        this.telelphoneNumbers = telelphoneNumbers;
+    }
 
-        Helper.clearConsoleScreen();
-        Helper.PrintInColor(" ==================================================================================\n",
-                Config.GREEN);
-        Helper.PrintInColor(String.format("%s\n", flag), Config.BLUE);
-        Helper.PrintInColor("==================================================================================\n",
-                Config.GREEN);
+    public String[] getEmailAddresses() {
+        return emailAddresses;
+    }
 
-        Person person = new Person();
+    public void setEmailAddresses(String[] emailAddresses) {
+        this.emailAddresses = emailAddresses;
+    }
+
+    public String[] getSocialAcounts() {
+        return socialAcounts;
+    }
+
+    public void setSocialAcounts(String[] socialAcounts) {
+        this.socialAcounts = socialAcounts;
+    }
+
+    public String getProfession() {
+        return profession;
+    }
+
+    public void setProfession(String profession) {
+        this.profession = profession;
+    }
+
+    public void askName() {
+
         Scanner sc = new Scanner(System.in);
 
         System.out.print(" Enter a name [] : ");
@@ -99,14 +94,20 @@ public class Contacts {
             System.out
                     .println(
                             String.format("\n %sName should contain at least 3 character %s%s",
-                                    Config.RED,
-                                    Config.RED,
-                                    Config.RESET));
+                                    RED,
+                                    RED,
+                                    RESET));
             System.out.println();
             System.out.print(" Enter a name [] : ");
             name = sc.nextLine();
         }
-        person.setName(name);
+        setName(name);
+        // sc.close();
+    }
+
+    public void askLastName() {
+
+        Scanner sc = new Scanner(System.in);
 
         System.out.print(" Enter one or more last name separated by , [] : ");
         String lastName = sc.nextLine();
@@ -115,14 +116,20 @@ public class Contacts {
             System.out
                     .println(
                             String.format("\n %slast name should contain at least 3 character %s%s",
-                                    Config.RED,
-                                    Config.RED,
-                                    Config.RESET));
+                                    RED,
+                                    RED,
+                                    RESET));
             System.out.println();
             System.out.print(" Enter one or more last name separated by , [] : ");
             name = sc.nextLine();
         }
-        person.setLastname(lastName.split(","));
+        setLastname(lastName.split(","));
+
+        // sc.close();
+    }
+
+    public void askAdress() {
+        Scanner sc = new Scanner(System.in);
 
         System.out.print(" Enter Address [] : ");
         String address = sc.nextLine();
@@ -130,30 +137,40 @@ public class Contacts {
             System.out
                     .println(
                             String.format("\n %sAddress should at least contain 15 character length%s%s",
-                                    Config.RED,
-                                    Config.RED,
-                                    Config.RESET));
+                                    RED,
+                                    RED,
+                                    RESET));
             System.out.println();
             System.out.print(" Enter Address [] : ");
             address = sc.nextLine();
         }
-        person.setAddress(address);
+        setAddress(address);
 
+        // sc.close();
+    }
+
+    public void askEmail() {
+        Scanner sc = new Scanner(System.in);
         System.out.print(" Enter one or more email separated by , [] : ");
         String email = sc.nextLine();
 
         while (email.length() < 10 || !email.contains("@") || !email.contains(".")) {
             System.out
                     .println(
-                            String.format("\n %sPlease Insert a correct Email !%s%s", Config.RED,
-                                    Config.RED,
-                                    Config.RESET));
+                            String.format("\n %sPlease Insert a correct Email !%s%s", RED,
+                                    RED,
+                                    RESET));
             System.out.println();
             System.out.print(" Enter one or more email separated by , [] : ");
 
             email = sc.nextLine();
         }
-        person.setEmailAddresses(email.split(","));
+        setEmailAddresses(email.split(","));
+        // sc.close();
+    }
+
+    public void askTelephoneNumber() {
+        Scanner sc = new Scanner(System.in);
 
         System.out.print(" Enter one or more telephone number separated by , [] : ");
         String telephonNumber = sc.nextLine();
@@ -162,16 +179,21 @@ public class Contacts {
                 || telephonNumber.replaceAll(" ", telephonNumber).length() < 12) { // +4178 223 22 44
             System.out.println(
                     String.format("\n %sPLEASE INSERT A CORRECT TELEPHONE NUMBER !%s%s",
-                            Config.RED,
-                            Config.RED,
-                            Config.RESET));
+                            RED,
+                            RED,
+                            RESET));
             System.out.println();
             System.out.print(" Enter one or more telephone number separated by , [] : ");
-            email = sc.nextLine();
+            telephonNumber = sc.nextLine();
 
         }
-        person.setTelelphoneNumbers(telephonNumber.split(","));
+        setTelelphoneNumbers(telephonNumber.split(","));
 
+        // sc.close();
+    }
+
+    public void askSocialAcount() {
+        Scanner sc = new Scanner(System.in);
         System.out.print(" Enter one or more social acount URL separated by , [] :");
         String socialAcount = sc.nextLine();
 
@@ -179,15 +201,20 @@ public class Contacts {
             System.out
                     .println(
                             String.format("\n %sPLEASE INSERT A CORRECT URL PREFIXED BY HTTPS:// !%s%s",
-                                    Config.RED,
-                                    Config.RED,
-                                    Config.RESET));
+                                    RED,
+                                    RED,
+                                    RESET));
             System.out.println();
             System.out.print(" Enter one or more social acount URL separated by , [] :");
             socialAcount = sc.nextLine();
         }
-        person.setSocialAcounts(socialAcount.split(","));
+        setSocialAcounts(socialAcount.split(","));
+        // sc.close();
+    }
 
+    public void askProfession() {
+
+        Scanner sc = new Scanner(System.in);
         System.out.print(" Enter Your Contact Profession [] : ");
         String profession = sc.nextLine();
 
@@ -195,48 +222,32 @@ public class Contacts {
             System.out
                     .println(
                             String.format("\n %sPLEASE INSERT A CORRECT PROFESSION !%s%s",
-                                    Config.RED,
-                                    Config.RED,
-                                    Config.RESET));
+                                    RED,
+                                    RED,
+                                    RESET));
             System.out.println();
             System.out.print(" Enter Your Contact Profession [] : ");
             profession = sc.nextLine();
         }
-        person.setProfession(profession);
-        return person;
+        setProfession(profession);
+        // sc.close();
     }
 
-    public boolean delete(int id) {
+    public void displayRequestHeader() {
 
-        int elementId = id - 1;
-        if (elementId >= 0 && elementId < contact.length) {
-            // delete
-            Person[] temp = new Person[contact.length - 1];
+        clearConsoleScreen();
+        PrintInColor(" ==================================================================================\n", GREEN);
+        PrintInColor(String.format("%s\n", "CREATE A CONTACT"), BLUE);
+        PrintInColor("==================================================================================\n", GREEN);
 
-            int j = 0;
-            for (int i = 0; i < contact.length; i++) {
-                if (i != elementId) {
-                    temp[j] = contact[i];
-                    j++;
-                }
-            }
-            contact = temp;
-            return true;
-
-        } else {
-            return false;
-        }
     }
 
-    public boolean update(int id) {
+    public abstract String getType();
 
-        int elementId = id - 1;
-        if (elementId >= 0 && elementId < contact.length) {
+    public abstract void setType(String type);
 
-            contact[elementId] = this.createOrupdate("UPDATE A CONTACT");
-            return true;
-        } else {
-            return false;
-        }
-    }
+    public abstract void showContact();
+
+    public abstract void updateContact();
+
 }
