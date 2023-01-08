@@ -14,7 +14,7 @@ cache:
 variables:
   MAVEN_OPTS: "-Dmaven.repo.local=$CI_PROJECT_DIR/.cache/repository"
 
-build-backend:
+build:
   stage: build
   script:
     - mvn clean compile
@@ -23,14 +23,14 @@ build-backend:
       - target/
     expire_in: 1 hour
 
-test-backend:
-  stage: quality
+test:
+  stage: test
   script:
     - mvn test
   # dependencies:
   #   - build-backend
 
-package-backend:
+package:
   stage: deploy
   script:
     - mvn package
