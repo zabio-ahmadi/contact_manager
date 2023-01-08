@@ -83,7 +83,7 @@ public class Friends extends Contacts {
 
     }
 
-    public void updateContact(){
+    public void updateContact() {
         clearConsoleScreen();
         PrintInColor(" ==================================================================================\n", GREEN);
         PrintInColor(String.format("%s\n", "UPDATE CONTACT  [FRIENDS]"), BLUE);
@@ -102,14 +102,14 @@ public class Friends extends Contacts {
         System.out.format("%s %s %s : [] ", BLUE, "YOUR OPTION ", BLUE);
         Scanner sc = new Scanner(System.in);
         int option = sc.nextInt();
-        while(option < 1 || option > 8){
+        while (option < 1 || option > 8) {
             System.out.format("%s %s %s\n", RED, "ERREUR: PLEASE CHOOSE THE CORRECT OPTION", RED);
             System.out.format("%s", RESET);
             System.out.format("%s %s %s : [] ", BLUE, "YOUR OPTION ", BLUE);
             option = sc.nextInt();
         }
 
-        switch (option){
+        switch (option) {
             case 1:
                 askName();
                 break;
@@ -188,5 +188,10 @@ public class Friends extends Contacts {
         System.out.println(
                 "----------------------------------------------------------------------------------\n");
 
+    }
+
+    @Override
+    public String toString() {
+        return this.getName();
     }
 }

@@ -1,6 +1,5 @@
 
 import static org.junit.Assert.assertEquals;
-
 import java.util.List;
 
 import org.junit.Test;
@@ -11,17 +10,21 @@ import Friends.Friends;
 
 public class MainTest {
 
+  Application app;
+
+  public MainTest() {
+    app = new Application();
+  }
+
   @Test
   public void insertContactTest() {
 
-    Application app = new Application();
-
-    String name = "agnon";
-    List<String> lastName = List.of("kurteshi", "burteshi");
+    String name = "alex";
+    List<String> lastName = List.of("kurteshi", "browman");
     String address = "rue du rhone 4, 1203 Genève";
     List<String> telephoneNumber = List.of("+41 77 444 33 22");
-    List<String> email = List.of("agnon@gmail.com");
-    List<String> socialAcount = List.of("https://hello.com/?name=agnon");
+    List<String> email = List.of("alex@gmail.com");
+    List<String> socialAcount = List.of("https://hello.com/?name=alex");
     String profession = "student";
     String friendSince = "2022/02/02";
 
@@ -33,21 +36,17 @@ public class MainTest {
     assertEquals(app.getContactList().size(), 1);
     assertEquals(app.getContactList().get(0).getName(), name);
     assertEquals(app.getContactList().get(0).getType(), contact.getType());
-    System.out.println("INSERTION TEST PASSED");
-
   }
 
   @Test
   public void DeleteContactTest() {
 
-    Application app = new Application();
-
-    String name = "agnon";
-    List<String> lastName = List.of("kurteshi", "burteshi");
+    String name = "alex";
+    List<String> lastName = List.of("kurteshi", "browman");
     String address = "rue du rhone 4, 1203 Genève";
     List<String> telephoneNumber = List.of("+41 77 444 33 22");
-    List<String> email = List.of("agnon@gmail.com");
-    List<String> socialAcount = List.of("https://hello.com/?name=agnon");
+    List<String> email = List.of("alex@gmail.com");
+    List<String> socialAcount = List.of("https://hello.com/?name=alex");
     String profession = "student";
     String friendSince = "2022/02/02";
 
@@ -60,22 +59,17 @@ public class MainTest {
 
     // after delete size should be 0
     assertEquals(app.getContactList().size(), 0);
-
-    System.out.println("DELETION TEST PASSED");
-
   }
 
   @Test
   public void sort() {
 
-    Application app = new Application();
-
-    String name = "agnon";
-    List<String> lastName = List.of("kurteshi", "burteshi");
+    String name = "alex";
+    List<String> lastName = List.of("kurteshi", "browman");
     String address = "rue du rhone 4, 1203 Genève";
     List<String> telephoneNumber = List.of("+41 77 444 33 22");
-    List<String> email = List.of("agnon@gmail.com");
-    List<String> socialAcount = List.of("https://hello.com/?name=agnon");
+    List<String> email = List.of("alex@gmail.com");
+    List<String> socialAcount = List.of("https://hello.com/?name=alex");
     String profession = "student";
     String friendSince = "2022/02/02";
 
@@ -93,7 +87,31 @@ public class MainTest {
 
     // if sort is correct then "AAAAAA" should be at index 0
     assertEquals(app.getContactList().get(0).getName(), name2);
-    System.out.println("SORT TEST PASSED");
+
+  }
+
+  @Test
+  public void search() {
+
+    String name = "nonexisting";
+    List<String> lastName = List.of("kurteshi", "browman");
+    String address = "rue du rhone 4, 1203 Genève";
+    List<String> telephoneNumber = List.of("+41 77 444 33 22");
+    List<String> email = List.of("alex@gmail.com");
+    List<String> socialAcount = List.of("https://hello.com/?name=alex");
+    String profession = "student";
+    String friendSince = "2022/02/02";
+
+    Contacts contact = new Friends(name, lastName, address, email, telephoneNumber, socialAcount, profession,
+        friendSince);
+
+    boolean findAlex = app.getContactList().stream().anyMatch(e -> e.getName().equals(name));
+
+    app.addToContactList(contact);
+
+    boolean findagian = app.getContactList().stream().anyMatch(e -> e.getName().equals(name));
+
+    assertEquals(!findAlex, findagian);
 
   }
 }
