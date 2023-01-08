@@ -22,8 +22,6 @@ import Professional.Professional;
 public class Application extends Helper {
     List<Contacts> contactsList = new ArrayList<>();
 
-
-
     public void saveContactList(List<Contacts> contactsList) {
 
         ObjectMapper objectMapper = new ObjectMapper();
@@ -107,7 +105,6 @@ public class Application extends Helper {
             Object obj = jsonParser.parse(reader);
 
             var contactList = (JSONArray) obj;
-
             contactList.forEach(contact -> parseContact(contact));
 
         } catch (IOException | org.json.simple.parser.ParseException e) {
@@ -453,6 +450,7 @@ public class Application extends Helper {
             scanner.close();// close scanner
         }
     }
+
     public List<Contacts> getContactList() {
         return this.contactsList;
     }
