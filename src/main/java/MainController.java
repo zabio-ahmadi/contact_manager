@@ -18,7 +18,6 @@ import javafx.scene.control.Alert.AlertType;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.text.Text;
 
-import java.awt.image.BufferedImage;
 import java.net.URL;
 import java.util.List;
 import java.util.Optional;
@@ -26,8 +25,6 @@ import java.util.ResourceBundle;
 import java.util.function.Predicate;
 import java.util.Arrays;
 import java.util.stream.Collectors;
-
-import javax.management.relation.Relation;
 
 public class MainController implements Initializable {
 

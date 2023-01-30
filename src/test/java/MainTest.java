@@ -108,4 +108,32 @@ public class MainTest {
     assertEquals(app.getContactList().get(0).getName(), name2);
 
   }
+
+  @Test
+  public void testDelete() {
+
+    String name = "alex";
+    List<String> lastName = List.of("kurteshi", "browman");
+    String address = "rue du rhone 4, 1203 Genève";
+    List<String> telephoneNumber = List.of("+41 77 444 33 22");
+    List<String> email = List.of("alex@gmail.com");
+    List<String> socialAcount = List.of("https://hello.com/?name=alex");
+    String profession = "student";
+    String relation = "close freind";
+
+    Contacts contact1 = new Friend(name, lastName, "Friend", relation, address, telephoneNumber, email, socialAcount,
+        profession);
+
+    int sizeBeforeDelete = app.getContactList().size();
+
+    app.addToContactList(contact1);
+
+    app.delete(name);
+
+    assertEquals(app.getContactList().size(), sizeBeforeDelete);
+
+    Optional<Contacts> exists = app.getContactList().stream().filter(contact -> contact.getName() == name).findFirst();
+    assertEquals(contact1, exists.get());
+
+  }
 }
