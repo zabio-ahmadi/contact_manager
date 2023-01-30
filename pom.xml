@@ -16,14 +16,6 @@
 
     <dependencies>
 
-        <dependency>
-            <groupId>com.google.zxing</groupId>
-            <artifactId>core</artifactId>
-            <version>3.4.0</version>
-        </dependency>
-        
-
-
 
         <!-- JAVA FX -->
         <dependency>
@@ -66,6 +58,21 @@
    <build>
     <pluginManagement><!-- lock down plugins versions to avoid using Maven defaults (may be moved to parent pom) -->
       <plugins>
+
+       <plugin>
+            <groupId>org.apache.maven.plugins</groupId>
+            <artifactId>maven-jar-plugin</artifactId>
+            <version>2.6</version>
+            <configuration>
+                <archive>
+                    <manifest>
+                        <mainClass>Main</mainClass>
+                    </manifest>
+                </archive>
+            </configuration>
+        </plugin>
+
+
           <plugin>
               <groupId>org.openjfx</groupId>
               <artifactId>javafx-maven-plugin</artifactId>
