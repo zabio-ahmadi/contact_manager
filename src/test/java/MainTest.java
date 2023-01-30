@@ -1,12 +1,14 @@
 
 import static org.junit.Assert.assertEquals;
+
 import java.util.List;
+import java.util.Optional;
 
 import org.junit.Test;
 
 import Application.Application;
 import Contacts.Contacts;
-import Friends.Friends;
+import Contacts.Friend;
 
 public class MainTest {
 
@@ -26,16 +28,30 @@ public class MainTest {
     List<String> email = List.of("alex@gmail.com");
     List<String> socialAcount = List.of("https://hello.com/?name=alex");
     String profession = "student";
-    String friendSince = "2022/02/02";
 
-    Contacts contact = new Friends(name, lastName, address, email, telephoneNumber, socialAcount, profession,
-        friendSince);
+    String type = "Friend";
+    String relation = "close friend";
+
+    Contacts contact = new Friend(name, lastName, type, relation, address, telephoneNumber, email, socialAcount,
+        profession);
+
+    int sizeBeforeAdd = app.getContactList().size();
 
     app.addToContactList(contact);
 
-    assertEquals(app.getContactList().size(), 1);
-    assertEquals(app.getContactList().get(0).getName(), name);
-    assertEquals(app.getContactList().get(0).getType(), contact.getType());
+    // check size + 1
+    assertEquals(app.getContactList().size(), 1 + sizeBeforeAdd);
+
+    // check if present
+    Optional<Contacts> filtered = app.getContactList()
+        .stream()
+        .filter(e -> e.getLastname().get(0).equals(lastName.get(0)))
+
+        .findFirst();
+    assertEquals(filtered.isPresent(), Boolean.TRUE);
+
+    // check type
+    assertEquals(filtered.get().getType(), contact.getType());
   }
 
   @Test
@@ -48,17 +64,20 @@ public class MainTest {
     List<String> email = List.of("alex@gmail.com");
     List<String> socialAcount = List.of("https://hello.com/?name=alex");
     String profession = "student";
-    String friendSince = "2022/02/02";
 
-    Contacts contact = new Friends(name, lastName, address, email, telephoneNumber, socialAcount, profession,
-        friendSince);
+    String type = "Friend";
+    String relation = Friend.contactRelation.get(0);
 
+    Contacts contact = new Friend(name, lastName, type, relation, address, telephoneNumber, email, socialAcount,
+        profession);
+    int sizeBeforeAdd = app.getContactList().size();
     app.addToContactList(contact);
 
-    app.delete(1);
+    // delete should return true if found
+    assertEquals(app.delete(name), Boolean.TRUE);
+    // the size should bee eqauls means delete works
+    assertEquals(app.getContactList().size(), sizeBeforeAdd);
 
-    // after delete size should be 0
-    assertEquals(app.getContactList().size(), 0);
   }
 
   @Test
@@ -71,47 +90,22 @@ public class MainTest {
     List<String> email = List.of("alex@gmail.com");
     List<String> socialAcount = List.of("https://hello.com/?name=alex");
     String profession = "student";
-    String friendSince = "2022/02/02";
+    String relation = "close freind";
 
-    Contacts contact1 = new Friends(name, lastName, address, email, telephoneNumber, socialAcount, profession,
-        friendSince);
+    Contacts contact1 = new Friend(name, lastName, "Friend", relation, address, telephoneNumber, email, socialAcount,
+        profession);
 
     String name2 = "AAAAAA";
-    List<String> lastName2 = List.of("BBBBBBBBBBBBBBB", "BOURRRRRIS");
+    List<String> lastName2 = List.of("AAAAAA", "BBBBB");
 
-    Contacts contact2 = new Friends(name2, lastName2, address, email, telephoneNumber, socialAcount, profession,
-        friendSince);
+    Contacts contact2 = new Friend(name2, lastName2, "Friend", relation, address, email, telephoneNumber, socialAcount,
+        profession);
 
     app.addToContactList(contact1);
     app.addToContactList(contact2);
 
     // if sort is correct then "AAAAAA" should be at index 0
     assertEquals(app.getContactList().get(0).getName(), name2);
-
-  }
-
-  @Test
-  public void search() {
-
-    String name = "nonexisting";
-    List<String> lastName = List.of("kurteshi", "browman");
-    String address = "rue du rhone 4, 1203 Genève";
-    List<String> telephoneNumber = List.of("+41 77 444 33 22");
-    List<String> email = List.of("alex@gmail.com");
-    List<String> socialAcount = List.of("https://hello.com/?name=alex");
-    String profession = "student";
-    String friendSince = "2022/02/02";
-
-    Contacts contact = new Friends(name, lastName, address, email, telephoneNumber, socialAcount, profession,
-        friendSince);
-
-    boolean findAlex = app.getContactList().stream().anyMatch(e -> e.getName().equals(name));
-
-    app.addToContactList(contact);
-
-    boolean findagian = app.getContactList().stream().anyMatch(e -> e.getName().equals(name));
-
-    assertEquals(!findAlex, findagian);
 
   }
 }

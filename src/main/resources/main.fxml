@@ -1,0 +1,343 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--
+  Copyright (c) 2015, 2019, Gluon and/or its affiliates.
+  All rights reserved. Use is subject to license terms.
+
+  This file is available and licensed under the following license:
+
+  Redistribution and use in source and binary forms, with or without
+  modification, are permitted provided that the following conditions
+  are met:
+
+  - Redistributions of source code must retain the above copyright
+    notice, this list of conditions and the following disclaimer.
+  - Redistributions in binary form must reproduce the above copyright
+    notice, this list of conditions and the following disclaimer in
+    the documentation and/or other materials provided with the distribution.
+  - Neither the name of Oracle Corporation nor the names of its
+    contributors may be used to endorse or promote products derived
+    from this software without specific prior written permission.
+
+  THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
+  "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
+  LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR
+  A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT
+  OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL,
+  SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT
+  LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE,
+  DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY
+  THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
+  (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
+  OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+-->
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="784.0" prefWidth="1469.0" style="-fx-border-color: #999;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="MainController">
+   <left>
+      <VBox prefHeight="596.0" prefWidth="204.0" style="-fx-background-color: #2d4059;" BorderPane.alignment="CENTER">
+         <children>
+            <Pane prefHeight="108.0" prefWidth="185.0">
+               <children>
+                  <ImageView fitHeight="50.0" fitWidth="178.0" focusTraversable="true" layoutX="1.0" layoutY="16.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@e.png" />
+                     </image>
+                  </ImageView>
+               </children>
+            </Pane>
+            <Button fx:id="allcontacts" alignment="BASELINE_LEFT" mnemonicParsing="false" onAction="#showAllcontacts" prefHeight="54.0" prefWidth="211.0" style="-fx-background-color: #2d4059;" styleClass="btn" text="ALL CONTACTS" textFill="WHITE">
+               <opaqueInsets>
+                  <Insets />
+               </opaqueInsets>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+               <font>
+                  <Font size="12.0" />
+               </font>
+               <padding>
+                  <Insets left="15.0" />
+               </padding>
+            </Button>
+            <Button fx:id="familyContacts" alignment="BASELINE_LEFT" mnemonicParsing="false" onAction="#showFamilyContacts" prefHeight="54.0" prefWidth="210.0" style="-fx-background-color: #2d4059;" styleClass="btn" text="FAMILY CONTACTS" textFill="WHITE">
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+               <font>
+                  <Font size="12.0" />
+               </font>
+               <padding>
+                  <Insets left="15.0" />
+               </padding>
+            </Button>
+            <Button fx:id="friendsContacts" alignment="BASELINE_LEFT" mnemonicParsing="false" onAction="#showFriendsContacts" prefHeight="55.0" prefWidth="228.0" style="-fx-background-color: #2d4059;" styleClass="btn" text="FRIENDS CONTACTS" textFill="WHITE">
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+               <font>
+                  <Font size="12.0" />
+               </font>
+               <padding>
+                  <Insets left="15.0" />
+               </padding>
+            </Button>
+            <Button fx:id="professionalContacts" alignment="BASELINE_LEFT" mnemonicParsing="false" onAction="#showProfessionalContacts" prefHeight="55.0" prefWidth="222.0" style="-fx-background-color: #2d4059;" styleClass="btn" text="PROFESSIONAL CONTACTS" textFill="WHITE">
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+               <font>
+                  <Font size="12.0" />
+               </font>
+               <padding>
+                  <Insets left="15.0" />
+               </padding>
+            </Button>
+            <Pane prefHeight="124.0" prefWidth="204.0" />
+            <Pane prefHeight="335.0" prefWidth="204.0">
+               <children>
+                  <Text fill="#f95959" layoutX="40.0" layoutY="311.0" strokeType="OUTSIDE" strokeWidth="0.0" text="HEPIA, POO 2023" />
+               </children></Pane>
+         </children>
+         <padding>
+            <Insets left="10.0" right="10.0" />
+         </padding>
+      </VBox>
+   </left>
+   <center>
+      <HBox prefHeight="782.0" prefWidth="1307.0" style="-fx-background-color: #fff;" BorderPane.alignment="CENTER">
+         <children>
+            <VBox prefHeight="782.0" prefWidth="1266.0">
+               <children>
+                  <VBox alignment="TOP_CENTER" prefHeight="400.0" prefWidth="1125.0">
+                     <children>
+                        <Pane prefHeight="44.0" prefWidth="1118.0">
+                           <children>
+                              <Button layoutX="1213.0" layoutY="3.0" mnemonicParsing="false" onAction="#exitApplication" style="-fx-background-color: transparent;">
+                                 <cursor>
+                                    <Cursor fx:constant="HAND" />
+                                 </cursor>
+                                 <graphic>
+                                    <ImageView fitHeight="29.0" fitWidth="37.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@close_red.png" />
+                                       </image>
+                                       <cursor>
+                                          <Cursor fx:constant="HAND" />
+                                       </cursor>
+                                    </ImageView>
+                                 </graphic>
+                              </Button>
+                           </children>
+                        </Pane>
+                        <HBox prefHeight="275.0" prefWidth="1072.0">
+                           <children>
+                              <VBox prefHeight="275.0" prefWidth="882.0">
+                                 <children>
+                                    <HBox alignment="CENTER_LEFT" prefHeight="43.0" prefWidth="300.0" spacing="17.0">
+                                       <children>
+                                          <Pane prefHeight="43.0" prefWidth="300.0">
+                                             <children>
+                                                <Text layoutX="4.0" layoutY="26.0" strokeType="OUTSIDE" strokeWidth="0.0" text="name" wrappingWidth="58.8671875" />
+                                                <TextField fx:id="name" layoutX="78.0" layoutY="10.0" prefHeight="24.0" prefWidth="227.0" promptText="your name" />
+                                             </children>
+                                          </Pane>
+                                          <Pane prefHeight="43.0" prefWidth="364.0">
+                                             <children>
+                                                <Text layoutX="14.0" layoutY="26.0" strokeType="OUTSIDE" strokeWidth="0.0" text="last name" wrappingWidth="94.8671875" />
+                                                <TextField fx:id="lastName" layoutX="133.0" layoutY="10.0" prefHeight="24.0" prefWidth="217.0" promptText="lastname" />
+                                             </children>
+                                          </Pane>
+                                       </children>
+                                       <padding>
+                                          <Insets left="17.0" />
+                                       </padding>
+                                    </HBox>
+                                    <HBox alignment="CENTER_LEFT" prefHeight="43.0" prefWidth="300.0" spacing="17.0">
+                                       <padding>
+                                          <Insets left="17.0" />
+                                       </padding>
+                                       <children>
+                                          <Pane prefHeight="43.0" prefWidth="312.0">
+                                             <children>
+                                                <Text layoutX="4.0" layoutY="26.0" strokeType="OUTSIDE" strokeWidth="0.0" text="address" wrappingWidth="58.8671875" />
+                                                <TextField fx:id="address" layoutX="78.0" layoutY="10.0" prefHeight="24.0" prefWidth="226.0" promptText="your address" />
+                                             </children>
+                                          </Pane>
+                                          <Pane prefHeight="43.0" prefWidth="346.0">
+                                             <children>
+                                                <Text layoutY="27.0" strokeType="OUTSIDE" strokeWidth="0.0" text="telephone" wrappingWidth="94.8671875" />
+                                                <TextField fx:id="telephone" layoutX="120.0" layoutY="10.0" prefHeight="24.0" prefWidth="220.0" promptText="+418888888" />
+                                             </children>
+                                          </Pane>
+                                       </children>
+                                    </HBox>
+                                    <HBox alignment="CENTER_LEFT" prefHeight="43.0" prefWidth="300.0" spacing="17.0">
+                                       <padding>
+                                          <Insets left="17.0" />
+                                       </padding>
+                                       <children>
+                                          <Pane prefHeight="43.0" prefWidth="312.0">
+                                             <children>
+                                                <Text layoutX="4.0" layoutY="26.0" strokeType="OUTSIDE" strokeWidth="0.0" text="email" wrappingWidth="58.8671875" />
+                                                <TextField fx:id="email" layoutX="78.0" layoutY="10.0" prefHeight="24.0" prefWidth="226.0" promptText="you@demo.com" />
+                                             </children>
+                                          </Pane>
+                                          <Pane prefHeight="43.0" prefWidth="346.0">
+                                             <children>
+                                                <Text layoutY="27.0" strokeType="OUTSIDE" strokeWidth="0.0" text="social acount" wrappingWidth="94.8671875" />
+                                                <TextField fx:id="socialAcount" layoutX="120.0" layoutY="10.0" prefHeight="24.0" prefWidth="220.0" promptText="https://" />
+                                             </children>
+                                          </Pane>
+                                       </children>
+                                    </HBox>
+                                    <HBox alignment="CENTER_LEFT" prefHeight="43.0" prefWidth="300.0" spacing="17.0">
+                                       <padding>
+                                          <Insets left="17.0" />
+                                       </padding>
+                                       <children>
+                                          <Pane prefHeight="43.0" prefWidth="322.0">
+                                             <children>
+                                                <Text layoutY="25.0" strokeType="OUTSIDE" strokeWidth="0.0" text="profession" wrappingWidth="67.8671875" />
+                                                <TextField fx:id="profession" layoutX="78.0" layoutY="10.0" prefHeight="24.0" prefWidth="226.0" promptText="student" />
+                                             </children>
+                                          </Pane>
+                                          <Pane prefHeight="40.0" prefWidth="341.0">
+                                             <children>
+                                                <Text layoutX="-2.0" layoutY="25.0" strokeType="OUTSIDE" strokeWidth="0.0" text="type" wrappingWidth="67.8671875" />
+                                                <ComboBox fx:id="comboType" layoutX="110.0" layoutY="7.0" onAction="#changeComboType" prefHeight="24.0" prefWidth="220.0" promptText="Type" />
+                                             </children>
+                                          </Pane>
+                                       </children>
+                                    </HBox>
+                                    <HBox alignment="CENTER_LEFT" prefHeight="59.0" prefWidth="669.0" spacing="50.0">
+                                       <padding>
+                                          <Insets left="17.0" />
+                                       </padding>
+                                       <children>
+                                          <Pane prefHeight="40.0" prefWidth="341.0">
+                                             <children>
+                                                <Text layoutX="-1.0" layoutY="29.0" strokeType="OUTSIDE" strokeWidth="0.0" text="relation" wrappingWidth="67.8671875" />
+                                                <ComboBox fx:id="comboRelation" layoutX="75.0" layoutY="15.0" prefHeight="24.0" prefWidth="226.0" promptText="relation" />
+                                             </children>
+                                          </Pane>
+                                          <Pane prefHeight="40.0" prefWidth="341.0">
+                                             <children>
+                                                <Button fx:id="add" layoutX="67.0" layoutY="15.0" mnemonicParsing="false" onAction="#addNewConact" prefHeight="33.0" prefWidth="220.0" style="-fx-background-color: #88a9f7;" text="ADD new contact" textFill="WHITE">
+                                                   <cursor>
+                                                      <Cursor fx:constant="HAND" />
+                                                   </cursor>
+                                                </Button>
+                                                <ImageView fitHeight="21.0" fitWidth="26.0" layoutX="86.0" layoutY="22.0" pickOnBounds="true" preserveRatio="true">
+                                                   <image>
+                                                      <Image url="@add.png" />
+                                                   </image>
+                                                </ImageView>
+                                             </children>
+                                          </Pane>
+                                       </children>
+                                    </HBox>
+                                    <Pane prefHeight="60.0" prefWidth="728.0">
+                                       <children>
+                                          <Button fx:id="update" layoutX="9.0" layoutY="11.0" mnemonicParsing="false" onAction="#updateConact" prefHeight="33.0" prefWidth="165.0" style="-fx-background-color: #44c662;" text="update contact" textFill="WHITE">
+                                             <cursor>
+                                                <Cursor fx:constant="HAND" />
+                                             </cursor>
+                                             <graphic>
+                                                <ImageView fitHeight="21.0" fitWidth="26.0" pickOnBounds="true" preserveRatio="true">
+                                                   <image>
+                                                      <Image url="@update1.png" />
+                                                   </image>
+                                                </ImageView>
+                                             </graphic>
+                                          </Button>
+                                          <Button fx:id="search" layoutX="187.0" layoutY="11.0" mnemonicParsing="false" onAction="#searchContact" prefHeight="33.0" prefWidth="144.0" style="-fx-background-color: #7986c7;" text="search contact" textFill="WHITE">
+                                             <cursor>
+                                                <Cursor fx:constant="HAND" />
+                                             </cursor>
+                                             <graphic>
+                                                <ImageView fitHeight="21.0" fitWidth="26.0" pickOnBounds="true" preserveRatio="true">
+                                                   <image>
+                                                      <Image url="@search.png" />
+                                                   </image>
+                                                </ImageView>
+                                             </graphic>
+                                          </Button>
+                                          <Button fx:id="delete" layoutX="537.0" layoutY="10.0" mnemonicParsing="false" onAction="#deleteContact" prefHeight="33.0" prefWidth="149.0" style="-fx-background-color: #f95959;" text="delete contact" textFill="WHITE">
+                                             <cursor>
+                                                <Cursor fx:constant="HAND" />
+                                             </cursor>
+                                             <graphic>
+                                                <ImageView fitHeight="21.0" fitWidth="26.0" pickOnBounds="true" preserveRatio="true">
+                                                   <image>
+                                                      <Image url="@delete.png" />
+                                                   </image>
+                                                </ImageView>
+                                             </graphic>
+                                          </Button>
+                                          <Button fx:id="clearFormBtn" layoutX="344.0" layoutY="10.0" mnemonicParsing="false" onAction="#clearForm" prefHeight="33.0" prefWidth="174.0" style="-fx-background-color: #00bbf0;" text="clear Form" textFill="WHITE">
+                                             <cursor>
+                                                <Cursor fx:constant="HAND" />
+                                             </cursor>
+                                             <graphic>
+                                                <ImageView fitHeight="21.0" fitWidth="26.0" pickOnBounds="true" preserveRatio="true">
+                                                   <image>
+                                                      <Image url="@refresh.png" />
+                                                   </image>
+                                                </ImageView>
+                                             </graphic>
+                                          </Button>
+                                       </children>
+                                    </Pane>
+                                 </children>
+                              </VBox>
+                              <Pane prefHeight="275.0" prefWidth="689.0">
+                                 <children>
+                                    <Pane layoutX="156.0" layoutY="14.0" prefHeight="158.0" prefWidth="151.0" style="-fx-border-color: #999;">
+                                       <children>
+                                          <ImageView fx:id="profilImage" fitHeight="158.0" fitWidth="154.0" layoutX="-2.0" pickOnBounds="true" preserveRatio="true" />
+                                       </children>
+                                    </Pane>
+                                    <Text fx:id="profilName" layoutX="156.0" layoutY="189.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="150.7294921875" />
+                                 </children></Pane>
+                           </children>
+                        </HBox>
+                     </children>
+                  </VBox>
+                  <TableView fx:id="contactTable" fixedCellSize="0.0" onMouseClicked="#displayForUpdate" prefHeight="532.0" prefWidth="1263.0">
+                    <columns>
+                        <TableColumn fx:id="colName" prefWidth="121.0" text="name" />
+                      <TableColumn fx:id="colLastName" editable="false" prefWidth="127.0" text="last name" />
+                      <TableColumn fx:id="colType" editable="false" prefWidth="125.0" text="contactType" />
+                        <TableColumn fx:id="colRelation" editable="false" prefWidth="157.0" text="relation" />
+                        <TableColumn fx:id="colAddress" editable="false" prefWidth="160.0" text="address" />
+                        <TableColumn fx:id="colTelephone" editable="false" prefWidth="138.0" text="telelphone" />
+                        <TableColumn fx:id="colEmail" editable="false" prefWidth="150.0" text="email" />
+                        <TableColumn fx:id="colSocialAcount" editable="false" minWidth="0.0" prefWidth="159.0" text="social acount" />
+                        <TableColumn fx:id="colProfession" editable="false" prefWidth="124.0" text="profession" />
+                    </columns>
+                     <opaqueInsets>
+                        <Insets />
+                     </opaqueInsets>
+                  </TableView>
+               </children>
+            </VBox>
+         </children>
+      </HBox>
+   </center>
+</BorderPane>
